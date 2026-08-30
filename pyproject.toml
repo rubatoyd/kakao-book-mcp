@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kakao-book-mcp"
+version = "0.1.0"
+description = "MCP server + CLI for Kakao Daum Book Search Open API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yeondong Yang" }]
+keywords = ["mcp", "kakao", "daum", "book", "openapi", "search", "metadata", "literature"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = [
+    "mcp>=1.2.0,<2",  # FastMCP 호환 상한 (mcp 2.0 제거 대응)
+    "requests>=2.31.0",
+    "openpyxl>=3.1.0",
+    "python-dotenv>=1.0.0",
+    "truststore>=0.9",  # 교육망/사내망 SSL 인터셉션 대응 (OS 신뢰저장소 사용)
+]
+
+[project.scripts]
+kakao-book-mcp = "kakao_book_mcp.server:main"
+kakao-book = "kakao_book_mcp.server:main"
+kbook = "kakao_book_mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/rubatoyd/kakao-book-mcp"
+Repository = "https://github.com/rubatoyd/kakao-book-mcp"
+Issues = "https://github.com/rubatoyd/kakao-book-mcp/issues"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kakao_book_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
