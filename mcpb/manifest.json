@@ -1,0 +1,43 @@
+{
+  "manifest_version": "0.3",
+  "name": "kakao-book-mcp",
+  "display_name": "카카오 Daum 책 검색 (kakao-book-mcp)",
+  "version": "0.1.0",
+  "description": "카카오 Daum 책 검색 OpenAPI 도서 검색·상세 서지 수집기 — 도서명·저자·출판사·ISBN 검색, 2500건 페이징 상한 안내, xlsx/csv/json/sqlite 내보내기",
+  "author": { "name": "Yeondong Yang", "url": "https://github.com/rubatoyd/kakao-book-mcp" },
+  "homepage": "https://github.com/rubatoyd/kakao-book-mcp",
+  "documentation": "https://github.com/rubatoyd/kakao-book-mcp#readme",
+  "license": "MIT",
+  "keywords": ["kakao", "daum", "book", "openapi", "mcp", "search", "metadata", "literature"],
+  "server": {
+    "type": "binary",
+    "entry_point": "uvx",
+    "mcp_config": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/rubatoyd/kakao-book-mcp", "kakao-book-mcp"],
+      "env": {
+        "KAKAO_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "카카오 REST API 키",
+      "description": "developers.kakao.com에서 발급받은 REST API 키입니다.",
+      "sensitive": true,
+      "required": true,
+      "default": ""
+    }
+  },
+  "tools": [
+    { "name": "kakao_book_status", "description": "인증키 점검 및 카카오 Daum 책 검색 API 실제 왕복 1회 테스트" },
+    { "name": "kakao_book_search", "description": "카카오 Daum 책 검색 API 키워드 검색 — total_count, truncated, cap_hit(2,500건 상한) 안내" },
+    { "name": "kakao_book_isbn", "description": "ISBN(10자리/13자리) 기준 단건 및 복수 도서 상세 조회" },
+    { "name": "kakao_book_collect", "description": "다중 검색어 자동 페이징 수집, 중복 제거 및 xlsx/csv/json/sqlite 파일 저장" }
+  ],
+  "compatibility": {
+    "platforms": ["win32", "darwin", "linux"],
+    "runtimes": { "python": ">=3.10" }
+  }
+}

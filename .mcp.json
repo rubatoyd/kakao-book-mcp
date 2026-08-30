@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kakao-book": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/rubatoyd/kakao-book-mcp", "kakao-book-mcp"],
+      "env": {
+        "KAKAO_API_KEY": "${KAKAO_API_KEY:-}",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}

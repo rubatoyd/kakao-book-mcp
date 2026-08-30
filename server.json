@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.rubatoyd/kakao-book-mcp",
+  "description": "Kakao Daum Book Search Open API - search books, authors, publishers, ISBN and export to excel/csv/sqlite",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/rubatoyd/kakao-book-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://github.com/rubatoyd/kakao-book-mcp",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/rubatoyd/kakao-book-mcp/releases/download/v0.1.0/kakao-book-mcp.mcpb",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "fileSha256": "91ea26a3cb72ad8b3765b5051584a4b05f9a3ae98b4097ddff207df723c56409",
+      "environmentVariables": [
+        {
+          "name": "KAKAO_API_KEY",
+          "description": "Kakao REST API Key (issued at developers.kakao.com)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
