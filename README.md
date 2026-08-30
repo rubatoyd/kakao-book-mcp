@@ -3,8 +3,8 @@
 <!-- mcp-name: io.github.rubatoyd/kakao-book-mcp -->
 
 [![CI](https://github.com/rubatoyd/kakao-book-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/rubatoyd/kakao-book-mcp/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/rubatoyd/kakao-book-mcp)](https://github.com/rubatoyd/kakao-book-mcp/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/rubatoyd/kakao-book-mcp/total?label=downloads)](https://github.com/rubatoyd/kakao-book-mcp/releases)
+[![Release](https://img.shields.io/github/v/release/rubatoyd/kakao-book-mcp?color=blue)](https://github.com/rubatoyd/kakao-book-mcp/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/rubatoyd/kakao-book-mcp/total?label=downloads&color=blue)](https://github.com/rubatoyd/kakao-book-mcp/releases)
 
 <!-- usage:start -->
 > 📊 **사용량 통계** — 최근 14일 조회 **0**회(순 0) · 클론 **0**회(순 0) · 릴리스 다운로드 **0**건
