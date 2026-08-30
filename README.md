@@ -90,7 +90,26 @@
 claude mcp add kakao-book --env KAKAO_API_KEY=YOUR_REST_API_KEY -- uvx --from git+https://github.com/rubatoyd/kakao-book-mcp kakao-book-mcp
 ```
 
-### 3. Cursor / Windsurf / Cline
+### 3. Gemini CLI / Antigravity
+
+프로젝트 루트의 `.agents/mcp_config.json` 또는 전역 `~/.gemini/config/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "kakao-book": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/rubatoyd/kakao-book-mcp", "kakao-book-mcp"],
+      "env": {
+        "KAKAO_API_KEY": "YOUR_KAKAO_REST_API_KEY",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}
+```
+
+### 4. Cursor / Windsurf / Cline
 
 - **Command**: `uvx`
 - **Args**: `["--from", "git+https://github.com/rubatoyd/kakao-book-mcp", "kakao-book-mcp"]`
