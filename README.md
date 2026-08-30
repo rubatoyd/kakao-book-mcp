@@ -49,17 +49,26 @@
 
 ---
 
-## 인증키 설정
+## 인증키 발급 및 설정 (1분 소요, 무료)
 
-1. [카카오 디벨로퍼스](https://developers.kakao.com) 로그인 후 **내 애플리케이션** 추가
-2. `앱 설정 > 요약 정보`에서 **REST API 키** 복사
-3. 다음 중 한 곳에 설정:
+카카오 Daum 책 검색 API는 **무료이며 별도의 승인 심사 없이 즉시 발급**됩니다 (일일 기본 30,000건 쿼터 제공).
 
-| 환경 | 설정 위치 |
-| :--- | :--- |
-| **Claude Desktop** | `claude_desktop_config.json` 의 `env.KAKAO_API_KEY` |
-| **Claude Code** | `claude mcp add ...` 또는 `.claude/settings.local.json` |
-| **CLI / 로컬 개발** | 프로젝트 폴더 내 `.env` 또는 OS 환경변수 `KAKAO_API_KEY` |
+### 1. REST API 키 발급 방법
+1. [카카오 디벨로퍼스 (developers.kakao.com)](https://developers.kakao.com) 접속 및 카카오 계정 로그인
+2. 상단 메뉴의 **[내 애플리케이션]** ➡️ **[애플리케이션 추가하기]** 클릭
+   * *앱 이름*: 임의 입력 (예: `kakao-book-mcp`)
+   * *사업자명*: 임의 입력 (예: `개인` 또는 본인 이름)
+3. 생성된 앱 클릭 ➡️ 좌측 **[앱 키]** (또는 [앱 설정] > [요약 정보])에서 **`REST API 키`** (32자리 16진수) 복사
+
+### 2. 환경별 키 등록 방법
+복사한 REST API 키를 사용 환경에 맞춰 설정합니다:
+
+| 사용 환경 | 설정 위치 | 설정 방법 |
+| :--- | :--- | :--- |
+| **Claude Desktop (`.mcpb`)** | 확장 설치 시 팝업창 | `.mcpb` 파일을 Claude Desktop에 드래그 앤 드롭 후 나타나는 입력창에 키 붙여넣기 |
+| **Claude Code** | `claude mcp add` | `--env KAKAO_API_KEY=YOUR_REST_API_KEY` 옵션으로 전달 |
+| **Antigravity / Gemini CLI** | `mcp_config.json` | `env.KAKAO_API_KEY` 항목에 설정 |
+| **CLI / 터미널 직접 실행** | OS 환경변수 / `.env` | Windows 환경변수 등록 또는 작업 폴더의 `.env` 파일에 `KAKAO_API_KEY=...` 작성 |
 
 ---
 
