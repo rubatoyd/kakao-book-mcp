@@ -1,0 +1,42 @@
+name: 사용량 기록
+
+on:
+  schedule:
+    - cron: "17 3 * * *"   # 매일 03:17 UTC (자정 혼잡 회피)
+  workflow_dispatch:
+
+permissions:
+  contents: write          # usage.csv 커밋 + traffic API 조회
+
+concurrency:
+  group: usage-record
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 사용량 조회 및 docs/usage.csv 기록
+        env:
+          GITHUB_TOKEN: ${{ secrets.USAGE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python scripts/record_usage.py
+
+      - name: 변경사항 커밋 및 푸시
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/usage.csv docs/usage.svg README.md
+          if git diff --cached --quiet; then
+            echo "변경사항 없음 — 커밋하지 않습니다."
+            exit 0
+          fi
+          git commit -m "chore: 사용량 통계 업데이트 $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git push && exit 0
+            echo "push 실패 — rebase 후 재시도 ($i/3)"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          done
+          echo "::error::3회 재시도 후에도 push 실패"
+          exit 1
