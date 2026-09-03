@@ -11,7 +11,7 @@
 >
 > ![일별 클론·조회 추이](docs/usage.svg)
 >
-> <sub>2026-09-02 자동 집계됨 · 전체 이력 [`docs/usage.csv`](docs/usage.csv). GitHub 트래픽 API 14일 창을 영구 보존합니다.</sub>
+> <sub>2026-09-03 자동 집계됨 · 전체 이력 [`docs/usage.csv`](docs/usage.csv). GitHub 트래픽 API 14일 창을 영구 보존합니다.</sub>
 <!-- usage:end -->
 
 **카카오 Daum 책 검색(Daum Book Search)** Open API를 Claude, Cursor 등 MCP 클라이언트에서 바로 쓰는 **MCP 서버 + CLI 도구**.  
